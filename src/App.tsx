@@ -95,7 +95,6 @@ function App() {
   };
 
   const handleDeletePostClick = async (id: number) => {
-    if (!window.confirm("Silmek istediğinize emin misiniz?")) return;
     try {
       await deletePost(id);
       setPosts(posts.filter(p => p.id !== id));
@@ -273,7 +272,8 @@ function App() {
                                 }} />
                               <FaTrash className='mb-1 ' color='rgba(255, 0, 0, 1)'   style={{ cursor: "pointer" }} 
                          
-                               onClick={() => {
+                               onClick={(e) => {
+                                e.stopPropagation();
                                 if (window.confirm("Silmek istediğinize emin misiniz?")) {
                                   handleDeletePostClick(post.id);
                                 }
