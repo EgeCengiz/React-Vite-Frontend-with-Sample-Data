@@ -1,5 +1,5 @@
 import { API_ENDPOINTS } from "../config/apiConfig";
-import type { User, Post, Comment } from "../type/index";
+import type { User, Post, Comments } from "../type/index";
 
 // Kullanıcılar
 export const getAllUsers = async (): Promise<User[]> => {
@@ -47,7 +47,7 @@ export const deletePost = async (id: number): Promise<boolean> => {
 };
 
 // Yorumlar
-export const getCommentsByPost = async (postId: number): Promise<Comment[]> => {
+export const getCommentsByPost = async (postId: number): Promise<Comments[]> => {
   const res = await fetch(API_ENDPOINTS.COMMENTS.GET_BY_POST(postId));
   return res.json();
 };
